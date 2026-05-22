@@ -255,7 +255,7 @@ jobs:
           GL_VER="${{ matrix.gardenLinuxVersion }}"
           GL_FULL="${{ matrix.gardenLinuxFullVersion }}"
           FLAVOUR="${{ matrix.flavour }}"
-          SM_REGISTRY="ghcr.io/sap/sapmachine"
+          SM_REGISTRY="ghcr.io/raeesorg/SapMachine-infrastructure"
 
           echo "Building SapMachine ${SM_FULL} on GardenLinux ${GL_FULL} — flavour ${FLAVOUR}"
 
@@ -287,7 +287,7 @@ jobs:
           echo "::group::Pushing ${TAG_COUNT} tags"
           for tag in $(echo "$TAGS" | jq -r '.[]'); do
             echo "Pushing ${SM_REGISTRY}:${tag}"
-            podman manifest push "${SM_REGISTRY}:${FIRST_TAG}" "docker://${SM_REGISTRY}:${tag}"
+            #podman manifest push "${SM_REGISTRY}:${FIRST_TAG}" "docker://${SM_REGISTRY}:${tag}"
           done
           echo "::endgroup::"
 
