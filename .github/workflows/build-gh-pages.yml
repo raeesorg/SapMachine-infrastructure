@@ -33,7 +33,7 @@ jobs:
           repository: SapMachine/SapMachineIOPage
           token: ${{ secrets.GHE_PAT }}
           github-server-url: https://github.tools.sap
-          ref: 'main'
+          ref: 'investigate_securitytxt_pub'
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Build with Jekyll
@@ -41,6 +41,16 @@ jobs:
         with:
           source: ./
           destination: ./_site
+
+      - name: Debug generated files
+        run: |
+          echo "==== LIST _site ===="
+          find _site | sort
+
+          echo "==== CHECK SECURITY.TXT ===="
+          ls -la _site/.well-known || true
+          cat _site/.well-known/security.txt || true
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
 
