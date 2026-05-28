@@ -52,6 +52,12 @@ jobs:
           ls -la _site/.well-known || true
           cat _site/.well-known/security.txt || true
 
+      - name: Verify final artifact
+        run: |
+          echo "==== VERIFY ===="
+          test -f _site/.well-known/security.txt
+          echo "FOUND"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
 
