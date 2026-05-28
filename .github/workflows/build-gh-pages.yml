@@ -33,7 +33,7 @@ jobs:
           repository: SapMachine/SapMachineIOPage
           token: ${{ secrets.GHE_PAT }}
           github-server-url: https://github.tools.sap
-          ref: refs/heads/investigate_securitytxt_pub
+          ref: refs/heads/investigate_security_txt
           fetch-depth: 0
       - name: Setup Pages
         uses: actions/configure-pages@v6
